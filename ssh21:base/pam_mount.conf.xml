@@ -13,12 +13,14 @@
 <debug enable="0" />
     <!-- Volume definitions -->
     <!-- muntar ~/mytmp amb un ramdisk de 100M -->
-    <volume
-       user="*"
-       fstype="tmpfs"
-       mountpoint="~/mytmp"
-       options="size=100M" 
-     />
+    <!-- 
+      <volume
+         user="*"
+         fstype="tmpfs"
+         mountpoint="~/mytmp"
+         options="size=100M" 
+       />
+    -->
 	     <!-- pam_mount parameters: General tunables -->
 
 <!--
