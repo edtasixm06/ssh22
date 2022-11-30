@@ -17,7 +17,7 @@ ASIX M06-ASO Escola del treball de barcelona
  
 ``` 
 docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -d edtasixm06/ldap22:latest
-docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx -d edtasixm06/ssh22:base
+docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx --privileged -d edtasixm06/ssh22:base
 ```
 
  * **edtasixm06/ssh22:sshfs** Host *client* que accedeix al servidor SSH. Aquest host client 
