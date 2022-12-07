@@ -24,7 +24,7 @@
        uid="5000-10000"
        path="sshfs#%(USER)@ssh.edt.org:./."
        mountpoint="~/%(USER)"
-       options="port=22,nosuid,nodev,noatime,reconnect,allow_other,default_permissions,password_stdin"
+       options="port=2022,nosuid,nodev,noatime,reconnect,allow_other,default_permissions,password_stdin"
        ssh="0" noroot="0" 
      />
 	     <!-- pam_mount parameters: General tunables -->

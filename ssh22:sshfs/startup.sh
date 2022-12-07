@@ -20,7 +20,8 @@ cp /opt/docker/pam_mount.conf.xml /etc/security/pam_mount.conf.xml
 
 mkdir /root/.ssh
 chmod 700 /root/.ssh
-cp /opt/docker/known_hosts /root/.ssh/known_hosts
+#cp /opt/docker/known_hosts /root/.ssh/known_hosts
+ssh-keyscan ssh.edt.org >> /root/.ssh/known_hosts
 
 /bin/bash
 
