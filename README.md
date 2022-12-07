@@ -25,7 +25,7 @@ docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx --privileged -d ed
    configurat *syste-auth* per uar *pam_mount* i configurat *pam_mount.conf.xml* per muntar
    un recurs de xarxa al home dels usuaris via *SSHFS*. 
 
-   **Atenció:** aquesta imatge és en ralitat un *pam21:sshfs*
+   **Atenció:** aquesta imatge és en ralitat un *pam222:sshfs*
 
 
 
