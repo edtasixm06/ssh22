@@ -37,7 +37,52 @@ ASIX M06-ASO Escola del treball de barcelona
   tmpfs o no i si el servidor al que connecta està al port 2022 (aws) o al port ssh normal 22 
   (exemple amb desplegament local).
 
+  ```
+  <volume fstype="fuse"
+       user="*"
+       uid="5000-10000"
+       path="sshfs#%(USER)@ssh.edt.org:./."
+       mountpoint="~/%(USER)"
+       options="port=22,nosuid,nodev,noatime,reconnect,allow_other,default_permissions,password_stdin"
+       ssh="0" noroot="0" 
+     />
+  ```
 
+  **exemple de verificació**
+
+  ```
+  root@sshfs:/opt/docker# su - unix01
+  reenter password for pam_mount:
+  unix01@sshfs:~$ ls -la
+  total 24
+  drwxr-xr-x 3 unix01 unix01 4096 Dec  7 11:55 .
+  drwxr-xr-x 1 root   root   4096 Dec  7 11:54 ..
+  -rw------- 1 unix01 unix01   12 Dec  7 11:55 .bash_history
+  -rw-r--r-- 1 unix01 unix01  220 Mar 27  2022 .bash_logout
+  -rw-r--r-- 1 unix01 unix01 3526 Mar 27  2022 .bashrc
+  -rw-r--r-- 1 unix01 unix01  807 Mar 27  2022 .profile
+  drwxrwxrwt 2 root   unix01   40 Dec  7 11:55 mytmp
+  
+  unix01@sshfs:~$ logout
+
+  root@sshfs:/opt/docker# su - marta
+  reenter password for pam_mount:
+  $ ls -la
+  total 12
+  drwx--x--x 4 marta alumnes 4096 Dec  7 11:55 .
+  drwx--x--x 3 marta alumnes 4096 Dec  7 11:55 ..
+  drwxr-xr-x 1 marta alumnes 4096 Sep 12 00:00 marta
+  drwxrwxrwt 2 root  alumnes   40 Dec  7 11:55 mytmp
+  $ ls -la marta
+  total 20
+  drwxr-xr-x 1 marta alumnes 4096 Sep 12 00:00 .
+  drwx--x--x 4 marta alumnes 4096 Dec  7 11:55 ..
+  -rw-r--r-- 1 marta alumnes  220 Mar 27  2022 .bash_logout
+  -rw-r--r-- 1 marta alumnes 3526 Mar 27  2022 .bashrc
+  -rw-r--r-- 1 marta alumnes  807 Mar 27  2022 .profile
+  ```
+
+### Exemple implementació
 
 ```
 docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -d edtasixm06/ldap22:latest
