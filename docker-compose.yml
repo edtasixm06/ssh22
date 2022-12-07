@@ -17,5 +17,15 @@ services:
       - "2022:22"
     networks:
      - 2hisx
+  phpldapadmin:
+    image: edtasixm06/ldap22:phpldapadmin
+    container_name: phpldapadmin.edt.org
+    hostname: phpldapadmin.edt.org
+    ports:
+      - "80:80"
+    networks:
+      - 2hisx
 networks:
   2hisx:
+
+# $ docker run --rm  --name phpldapadmin.edt.org -h phpldapadmin.edt.org --net 2hisx -p 80:80 -d edtasixm06/ldap22:phpldapadmin 
