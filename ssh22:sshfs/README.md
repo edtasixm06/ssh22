@@ -24,11 +24,24 @@ ASIX M06-ASO Escola del treball de barcelona
   servidor ssh (*ssh.edt.org*), si no el pam_mount es quedarà penjat esperant la confirmació,
   el yes, del fingerprint.
   
+  **Configuració del home amb sshfs**
+
+  Per configurar el recurs dins del home de l'usuari consultar com dfinir un recurs SSHFS del
+  pam_mount.conf.xml. Recordar que cal disposar al *known_hosts* de root del fingerprint del
+  host servidor ssh.
+ 
+  També que cal assegurar-se de tenir instal·lat el paquet *sshfs* per poder usar-ne la utilitat
+  de muntatge
+
+  Posar atenció a quin dels ftxers pam_mount.conf.xml volem usar. Si volem també els recursos 
+  tmpfs o no i si el servidor al que connecta està al port 2022 (aws) o al port ssh normal 22 
+  (exemple amb desplegament local).
+
+
 
 ```
 docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -d edtasixm06/ldap22:latest
 docker run --rm --name ssh.edt.org -h ssh.edt.org --net 2hisx -d edtasixm06/ssh22:base
-
 docker run --rm --name sshfs.edt.org --hostname sshfs.edt.org --net 2hisx --privileged --cap-add SYS_ADMIN --device /dev/fuse  --security-opt apparmor:unconfined -it edtasixm06/ssh22:sshfs
 ```
 
