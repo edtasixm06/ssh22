@@ -22,7 +22,8 @@ ASIX M06-ASO Escola del treball de barcelona
   **Atenció** al problema del known_hosts, cal que en el client PAM que munta els homes via
   sshfs abans de muntar cap home estigui al *.ssh/known_hosts* de *root* el *fingerprint* del
   servidor ssh (*ssh.edt.org*), si no el pam_mount es quedarà penjat esperant la confirmació,
-  el yes, del fingerprint.
+  el yes, del fingerprint. O bé es pot optar (millor opció!) per usar ssh-keyscan i generar 
+  automàticament la captura del fingerprint per desar-lo al knoen_hosts.
   
   **Configuració del home amb sshfs**
 
@@ -48,7 +49,7 @@ ASIX M06-ASO Escola del treball de barcelona
      />
   ```
 
-  **exemple de verificació**
+  **Exemple de verificació**
 
   ```
   root@sshfs:/opt/docker# su - unix01
